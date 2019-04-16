@@ -848,7 +848,7 @@ endif()
 # INSTALL
 if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL)
   install(TARGETS ${PNG_LIB_TARGETS}
-          EXPORT libpng
+          EXPORT libpng-targets
           RUNTIME DESTINATION bin
           LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
           ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -916,7 +916,8 @@ endif()
 
 # Create an export file that CMake users can include() to import our targets.
 if(NOT SKIP_INSTALL_EXPORT AND NOT SKIP_INSTALL_ALL)
-  install(EXPORT libpng DESTINATION lib/cmake/libpng)
+  install(EXPORT libpng-targets
+          DESTINATION lib/cmake/libpng)
 endif()
 
 # what's with libpng-manual.txt and all the extra files?
