@@ -916,8 +916,9 @@ endif()
 
 # Create an export file that CMake users can include() to import our targets.
 if(NOT SKIP_INSTALL_EXPORT AND NOT SKIP_INSTALL_ALL)
-  install(EXPORT libpng-targets
-          DESTINATION lib/cmake/libpng)
+    install(EXPORT libpng-targets
+            NAMESPACE libpng::
+            DESTINATION lib/cmake/libpng)
 endif()
 
 # what's with libpng-manual.txt and all the extra files?
