@@ -918,6 +918,7 @@ endif()
 if(NOT SKIP_INSTALL_EXPORT AND NOT SKIP_INSTALL_ALL)
     install(EXPORT libpng-targets
             NAMESPACE libpng::
+            FILE png-targets.cmake
             DESTINATION lib/cmake/libpng)
 endif()
 
