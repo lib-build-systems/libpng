@@ -911,11 +911,11 @@ if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL)
   # Install pkg-config files
   if(NOT CMAKE_HOST_WIN32 OR CYGWIN OR MINGW)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpng.pc
-            DESTINATION lib/cmake/libpng)
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libpng)
     install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/libpng-config
             DESTINATION ${CMAKE_INSTALL_BINDIR})
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}.pc
-            DESTINATION lib/cmake/libpng)
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libpng)
     install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}-config
             DESTINATION ${CMAKE_INSTALL_BINDIR})
   endif()
@@ -926,7 +926,7 @@ if(NOT SKIP_INSTALL_EXPORT AND NOT SKIP_INSTALL_ALL)
     install(EXPORT libpng-targets
             NAMESPACE libpng::
             FILE png-targets.cmake
-            DESTINATION lib/cmake/libpng)
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libpng)
 endif()
 
 # what's with libpng-manual.txt and all the extra files?
