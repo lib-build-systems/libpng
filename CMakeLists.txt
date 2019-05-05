@@ -881,8 +881,8 @@ if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL)
 endif()
 
 if(NOT SKIP_INSTALL_HEADERS AND NOT SKIP_INSTALL_ALL)
-  install(FILES ${libpng_public_hdrs}
-          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+#  install(FILES ${libpng_public_hdrs}
+#          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
   install(FILES ${libpng_public_hdrs}
           DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PNGLIB_NAME})
 endif()
@@ -906,9 +906,9 @@ if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL)
 #    set(PNG_MAN_DIR "share/man")
 #  endif()
   install(FILES libpng.3 libpngpf.3
-          DESTINATION ${CMAKE_INSTALL_MANDIR}/man3)
+          DESTINATION ${CMAKE_INSTALL_MANDIR}3)
   install(FILES png.5
-          DESTINATION ${CMAKE_INSTALL_MANDIR}/man5)
+          DESTINATION ${CMAKE_INSTALL_MANDIR}5)
           
   # Install pkg-config files
   if(NOT CMAKE_HOST_WIN32 OR CYGWIN OR MINGW)
