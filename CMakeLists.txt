@@ -881,8 +881,8 @@ if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL)
 endif()
 
 if(NOT SKIP_INSTALL_HEADERS AND NOT SKIP_INSTALL_ALL)
-#  install(FILES ${libpng_public_hdrs}
-#          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+  install(FILES ${libpng_public_hdrs}
+          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/png)
   install(FILES ${libpng_public_hdrs}
           DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PNGLIB_NAME})
 endif()
