@@ -849,7 +849,7 @@ endif()
 if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL)
   install(TARGETS ${PNG_LIB_TARGETS}
           EXPORT libpng-targets
-          RUNTIME DESTINATION bin
+          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
           LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
           ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
           FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -879,38 +879,45 @@ if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL)
 endif()
 
 if(NOT SKIP_INSTALL_HEADERS AND NOT SKIP_INSTALL_ALL)
-  install(FILES ${libpng_public_hdrs} DESTINATION include)
-  install(FILES ${libpng_public_hdrs} DESTINATION include/${PNGLIB_NAME})
+  install(FILES ${libpng_public_hdrs}
+          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+  install(FILES ${libpng_public_hdrs}
+          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PNGLIB_NAME})
 endif()
 if(NOT SKIP_INSTALL_EXECUTABLES AND NOT SKIP_INSTALL_ALL)
   if(NOT WIN32 OR CYGWIN OR MINGW)
-    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/libpng-config DESTINATION bin)
-    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}-config DESTINATION bin)
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/libpng-config
+            DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}-config
+            DESTINATION ${CMAKE_INSTALL_BINDIR})
   endif()
 endif()
 
 if(NOT SKIP_INSTALL_PROGRAMS AND NOT SKIP_INSTALL_ALL)
   install(TARGETS ${PNG_BIN_TARGETS}
-          RUNTIME DESTINATION bin)
+          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 endif()
 
 if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL)
   # Install man pages
-  if(NOT PNG_MAN_DIR)
-    set(PNG_MAN_DIR "share/man")
-  endif()
-  install(FILES libpng.3 libpngpf.3 DESTINATION ${PNG_MAN_DIR}/man3)
-  install(FILES png.5 DESTINATION ${PNG_MAN_DIR}/man5)
+#  if(NOT PNG_MAN_DIR)
+#    set(PNG_MAN_DIR "share/man")
+#  endif()
+  install(FILES libpng.3 libpngpf.3
+          DESTINATION ${CMAKE_INSTALL_MANDIR}/man3)
+  install(FILES png.5
+          DESTINATION ${CMAKE_INSTALL_MANDIR}/man5)
+          
   # Install pkg-config files
   if(NOT CMAKE_HOST_WIN32 OR CYGWIN OR MINGW)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpng.pc
-            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libpng)
+            DESTINATION lib/cmake/libpng)
     install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/libpng-config
-            DESTINATION bin)
+            DESTINATION ${CMAKE_INSTALL_BINDIR})
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}.pc
-            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libpng)
+            DESTINATION lib/cmake/libpng)
     install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${PNGLIB_NAME}-config
-            DESTINATION bin)
+            DESTINATION ${CMAKE_INSTALL_BINDIR})
   endif()
 endif()
 
