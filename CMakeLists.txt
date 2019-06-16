@@ -524,6 +524,9 @@ if(PNG_DEBUG)
   add_definitions(-DPNG_DEBUG)
 endif()
 
+# Make sure the targets are compiled with -fPIC
+set (CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 # NOW BUILD OUR TARGET
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_INCLUDE_DIR})
 
