@@ -46,12 +46,12 @@ elseif(NOT PNG_BUILD_ZLIB)
   include_directories(${ZLIB_INCLUDE_DIR})
 endif()
 
-#if(UNIX AND NOT APPLE AND NOT BEOS AND NOT HAIKU)
-#  find_library(M_LIBRARY m)
-#else()
+if(UNIX AND NOT APPLE AND NOT BEOS AND NOT HAIKU)
+  find_library(M_LIBRARY m)
+else()
   # libm is not needed and/or not available
   set(M_LIBRARY "")
-#endif()
+endif()
 
 # COMMAND LINE OPTIONS
 option(PNG_SHARED "Build shared lib" ON)
