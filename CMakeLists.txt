@@ -48,7 +48,7 @@ endif()
 
 if(UNIX AND NOT APPLE AND NOT BEOS AND NOT HAIKU)
 #  find_library(M_LIBRARY m)
-  set(M_LIBRARY m)
+  find_package(m REQUIRED)
 else()
   # libm is not needed and/or not available
   set(M_LIBRARY "")
