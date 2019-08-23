@@ -542,7 +542,7 @@ if(PNG_SHARED)
     set_target_properties(png PROPERTIES PREFIX "lib")
     set_target_properties(png PROPERTIES IMPORT_PREFIX "lib")
   endif()
-  target_link_libraries(png ${ZLIB_LIBRARY} ${M_LIBRARY})
+  target_link_libraries(png PRIVATE ${ZLIB_LIBRARY} ${M_LIBRARY})
 
   if(UNIX AND AWK)
     if(HAVE_LD_VERSION_SCRIPT)
