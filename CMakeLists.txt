@@ -48,6 +48,7 @@ endif()
 
 if(UNIX AND NOT APPLE AND NOT BEOS AND NOT HAIKU)
 #  find_library(M_LIBRARY m)
+   # Using 'find_library' links the target to the "libm.so", instead of -lm as expected.
   set(M_LIBRARY "m")
 else()
   # libm is not needed and/or not available
